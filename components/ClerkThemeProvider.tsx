@@ -18,7 +18,8 @@ export default function ClerkThemeProvider({
       appearance={{
         baseTheme: theme === 'dark' ? dark : undefined,
         variables: {
-          colorPrimary: theme === 'dark' ? '#10b981' : '#059669', // emerald-500/600
+          // brand blue: lighter accent and stronger/darker primary
+          colorPrimary: theme === 'dark' ? '#2563eb' : '#60a5fa', // blue-600 (dark) / blue-400 (light)
           colorBackground: theme === 'dark' ? '#1f2937' : '#ffffff',
           colorInputBackground: theme === 'dark' ? '#374151' : '#f9fafb',
           colorInputText: theme === 'dark' ? '#f3f4f6' : '#1f2937',
@@ -26,9 +27,9 @@ export default function ClerkThemeProvider({
         },
         elements: {
           formButtonPrimary: {
-            backgroundColor: theme === 'dark' ? '#10b981' : '#059669',
+            backgroundColor: theme === 'dark' ? '#2563eb' : '#60a5fa',
             '&:hover': {
-              backgroundColor: theme === 'dark' ? '#059669' : '#047857',
+              backgroundColor: theme === 'dark' ? '#60a5fa' : '#2563eb',
             },
           },
           card: {
