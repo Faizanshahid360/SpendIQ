@@ -146,14 +146,14 @@ const AddRecord = () => {
               htmlFor='date'
               className='flex items-center gap-2 text-xs font-semibold text-gray-700 dark:text-gray-300 tracking-wide'
             >
-              <span className='w-1.5 h-1.5 bg-green-500 rounded-full'></span>
+              <span className='w-1.5 h-1.5 bg-blue-500 rounded-full'></span>
               Expense Date
             </label>
             <input
               type='date'
               name='date'
               id='date'
-              className='w-full px-3 py-2.5 bg-white/70 dark:bg-gray-800/70 border-2 border-gray-200/80 dark:border-gray-600/80 rounded-xl focus:ring-2 focus:ring-emerald-500/30 focus:bg-white dark:focus:bg-gray-700/90 focus:border-emerald-400 dark:focus:border-emerald-400 text-gray-900 dark:text-gray-100 text-sm shadow-sm hover:shadow-md transition-all duration-200'
+              className='w-full px-3 py-2.5 bg-white/70 dark:bg-gray-800/70 border-2 border-gray-200/80 dark:border-gray-600/80 rounded-xl focus:ring-2 focus:ring-blue-500/30 focus:bg-white dark:focus:bg-gray-700/90 focus:border-blue-400 dark:focus:border-blue-400 text-gray-900 dark:text-gray-100 text-sm shadow-sm hover:shadow-md transition-all duration-200'
               required
               onFocus={(e) => e.target.showPicker()}
             />
@@ -168,7 +168,7 @@ const AddRecord = () => {
               htmlFor='category'
               className='flex items-center gap-2 text-xs font-semibold text-gray-700 dark:text-gray-300 tracking-wide'
             >
-              <span className='w-1.5 h-1.5 bg-green-500 rounded-full'></span>
+              <span className='w-1.5 h-1.5 bg-blue-500 rounded-full'></span>
               Category
               <span className='text-xs text-gray-400 dark:text-gray-500 ml-2 font-normal hidden sm:inline'>
                 Use the ✨ button above for AI suggestions
@@ -179,7 +179,7 @@ const AddRecord = () => {
               name='category'
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className='w-full px-3 py-2.5 bg-white/70 dark:bg-gray-800/70 border-2 border-gray-200/80 dark:border-gray-600/80 rounded-xl focus:ring-2 focus:ring-emerald-500/30 focus:bg-white dark:focus:bg-gray-700/90 focus:border-emerald-400 dark:focus:border-emerald-400 text-gray-900 dark:text-gray-100 cursor-pointer text-sm shadow-sm hover:shadow-md transition-all duration-200'
+              className='w-full px-3 py-2.5 bg-white/70 dark:bg-gray-800/70 border-2 border-gray-200/80 dark:border-gray-600/80 rounded-xl focus:ring-2 focus:ring-blue-500/30 focus:bg-white dark:focus:bg-gray-700/90 focus:border-blue-400 dark:focus:border-blue-400 text-gray-900 dark:text-gray-100 cursor-pointer text-sm shadow-sm hover:shadow-md transition-all duration-200'
               required
             >
               <option
@@ -237,7 +237,7 @@ const AddRecord = () => {
               htmlFor='amount'
               className='flex items-center gap-2 text-xs font-semibold text-gray-700 dark:text-gray-300 tracking-wide'
             >
-              <span className='w-1.5 h-1.5 bg-green-500 rounded-full'></span>
+              <span className='w-1.5 h-1.5 bg-blue-500 rounded-full'></span>
               Amount
               <span className='text-xs text-gray-400 dark:text-gray-500 ml-2 font-normal hidden sm:inline'>
                 Enter amount between Rs. 0 and Rs. 100,000
@@ -295,7 +295,7 @@ const AddRecord = () => {
         <div
           className={`mt-4 p-3 rounded-xl border-l-4 backdrop-blur-sm ${
             alertType === 'success'
-              ? 'bg-green-50/80 dark:bg-green-900/20 border-l-green-500 text-green-800 dark:text-green-200'
+              ? 'bg-blue-50/80 dark:bg-blue-900/20 border-l-blue-500 text-blue-800 dark:text-blue-200'
               : 'bg-red-50/80 dark:bg-red-900/20 border-l-red-500 text-red-800 dark:text-red-200'
           }`}
         >
@@ -303,7 +303,7 @@ const AddRecord = () => {
             <div
               className={`w-6 h-6 rounded-full flex items-center justify-center ${
                 alertType === 'success'
-                  ? 'bg-green-100 dark:bg-green-800'
+                  ? 'bg-blue-100 dark:bg-blue-800'
                   : 'bg-red-100 dark:bg-red-800'
               }`}
             >
