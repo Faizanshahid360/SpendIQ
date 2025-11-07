@@ -8,11 +8,19 @@ interface RawInsight {
   confidence?: number;
 }
 
+// Validate environment variables
+const API_KEY = process.env.OPENROUTER_API_KEY || process.env.OPENAI_API_KEY;
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+
+if (!API_KEY) {
+  console.error('❌ Missing AI service API key in environment variables');
+}
+
 const openai = new OpenAI({
   baseURL: 'https://openrouter.ai/api/v1',
-  apiKey: process.env.OPENROUTER_API_KEY || process.env.OPENAI_API_KEY,
+  apiKey: API_KEY,
   defaultHeaders: {
-    'HTTP-Referer': process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
+    'HTTP-Referer': APP_URL,
     'X-Title': 'SpendIQ',
   },
 });
@@ -38,6 +46,11 @@ export async function generateExpenseInsights(
   expenses: ExpenseRecord[]
 ): Promise<AIInsight[]> {
   try {
+    if (!process.env.OPENROUTER_API_KEY && !process.env.OPENAI_API_KEY) {
+      console.error('❌ No API key found for AI service');
+      throw new Error('AI service configuration missing');
+    }
+
     // Prepare expense data for AI analysis
     const expensesSummary = expenses.map((expense) => ({
       amount: expense.amount,
@@ -45,6 +58,11 @@ export async function generateExpenseInsights(
       description: expense.description,
       date: expense.date,
     }));
+
+    console.log('📊 Analyzing expenses:', {
+      count: expenses.length,
+      sampleExpense: expensesSummary[0],
+    });
 
     const prompt = `Analyze the following expense data and provide 3-4 actionable financial insights. 
     Return a JSON array of insights with this structure:
@@ -62,13 +80,15 @@ export async function generateExpenseInsights(
     Focus on:
     1. Spending patterns (day of week, categories)
     2. Budget alerts (high spending areas)
-    3. Money-saving opportunities
+    3. Money-saving opportunities (in Pakistani Rupees)
     4. Positive reinforcement for good habits
+
+    Note: All amounts are in Pakistani Rupees (Rs.)
 
     Return only valid JSON array, no additional text.`;
 
     const completion = await openai.chat.completions.create({
-      model: 'deepseek/deepseek-chat-v3-0324:free',
+      model: 'openai/gpt-3.5-turbo',
       messages: [
         {
           role: 'system',
@@ -117,20 +137,28 @@ export async function generateExpenseInsights(
     );
 
     return formattedInsights;
-  } catch (error) {
-    console.error('❌ Error generating AI insights:', error);
+  } catch (error: any) {
+    const errorMessage = error?.message || 'Unknown error occurred';
+    console.error('❌ Error generating AI insights:', {
+      message: errorMessage,
+      error,
+      expenseCount: expenses.length
+    });
 
-    // Fallback to mock insights if AI fails
+    // Return more specific error message
     return [
       {
-        id: 'fallback-1',
-        type: 'info',
-        title: 'AI Analysis Unavailable',
-        message:
-          'Unable to generate personalized insights at this time. Please try again later.',
+        id: 'error-1',
+        type: 'warning',
+        title: 'AI Analysis Issue',
+        message: `We're having trouble analyzing your expenses. ${
+          errorMessage.includes('API key') 
+            ? 'AI service is not properly configured.' 
+            : 'Please try again in a few moments.'
+        }`,
         action: 'Refresh insights',
         confidence: 0.5,
-      },
+      }
     ];
   }
 }
