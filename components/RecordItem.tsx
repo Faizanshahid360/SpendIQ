@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Record } from '@/types/Records';
 import deleteRecord from '@/app/actions/deleteRecord';
+import { formatCurrency, getAmountColorClass } from '@/lib/currency';
 
 // Helper function to get category emoji
 const getCategoryEmoji = (category: string) => {
@@ -32,12 +33,7 @@ const RecordItem = ({ record }: { record: Record }) => {
     setIsLoading(false); // Hide loading spinner
   };
 
-  // Determine border color based on expense amount
-  const getBorderColor = (amount: number) => {
-    if (amount > 100) return 'border-red-500'; // High expense
-    if (amount > 50) return 'border-yellow-500'; // Medium expense
-    return 'border-green-500'; // Low expense
-  };
+  const getBorderColor = getAmountColorClass;
 
   return (
     <li
@@ -83,7 +79,7 @@ const RecordItem = ({ record }: { record: Record }) => {
               {new Date(record?.date).toLocaleDateString()}
             </span>
             <span className='text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100'>
-              ${record?.amount.toFixed(2)}
+              {formatCurrency(record?.amount)}
             </span>
           </div>
 

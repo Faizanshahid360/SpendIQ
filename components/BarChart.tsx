@@ -12,6 +12,7 @@ import {
 } from 'chart.js';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useState, useEffect } from 'react';
+import { formatCurrency } from '@/lib/currency';
 
 // Register Chart.js components
 ChartJS.register(
@@ -98,27 +99,22 @@ const BarChart = ({ records }: { records: Record[] }) => {
 
   const aggregatedData = aggregateByDate(records);
 
-  // Get color based on amount (since we're aggregating multiple categories)
+  // Get color based on amount - matching RecordItem.tsx thresholds
   const getAmountColor = (amount: number) => {
-    if (amount > 200)
-      return {
-        bg: isDark ? 'rgba(255, 99, 132, 0.3)' : 'rgba(255, 99, 132, 0.2)',
-        border: isDark ? 'rgba(255, 99, 132, 0.8)' : 'rgba(255, 99, 132, 1)',
-      }; // Red for high spending
     if (amount > 100)
       return {
-        bg: isDark ? 'rgba(255, 206, 86, 0.3)' : 'rgba(255, 206, 86, 0.2)',
-        border: isDark ? 'rgba(255, 206, 86, 0.8)' : 'rgba(255, 206, 86, 1)',
-      }; // Yellow for medium spending
+        bg: isDark ? 'rgba(239, 68, 68, 0.3)' : 'rgba(239, 68, 68, 0.2)', // red-500
+        border: isDark ? 'rgba(239, 68, 68, 0.8)' : 'rgba(239, 68, 68, 1)',
+      }; // Red for high expense (>100)
     if (amount > 50)
       return {
-        bg: isDark ? 'rgba(54, 162, 235, 0.3)' : 'rgba(54, 162, 235, 0.2)',
-        border: isDark ? 'rgba(54, 162, 235, 0.8)' : 'rgba(54, 162, 235, 1)',
-      }; // Blue for moderate spending
+        bg: isDark ? 'rgba(234, 179, 8, 0.3)' : 'rgba(234, 179, 8, 0.2)', // yellow-500
+        border: isDark ? 'rgba(234, 179, 8, 0.8)' : 'rgba(234, 179, 8, 1)',
+      }; // Yellow for medium expense (>50)
     return {
-      bg: isDark ? 'rgba(75, 192, 192, 0.3)' : 'rgba(75, 192, 192, 0.2)',
-      border: isDark ? 'rgba(75, 192, 192, 0.8)' : 'rgba(75, 192, 192, 1)',
-    }; // Green for low spending
+      bg: isDark ? 'rgba(34, 197, 94, 0.3)' : 'rgba(34, 197, 94, 0.2)', // green-500
+      border: isDark ? 'rgba(34, 197, 94, 0.8)' : 'rgba(34, 197, 94, 1)',
+    }; // Green for low expense (≤50)
   };
 
   // Prepare data for the chart
@@ -170,7 +166,7 @@ const BarChart = ({ records }: { records: Record[] }) => {
               item.categories.length > 1
                 ? `Categories: ${item.categories.join(', ')}`
                 : `Category: ${item.categories[0]}`;
-            return [`Total: $${item.amount.toFixed(2)}`, categoriesText];
+            return [`Total: ${formatCurrency(item.amount)}`, categoriesText];
           },
         },
       },
@@ -201,7 +197,7 @@ const BarChart = ({ records }: { records: Record[] }) => {
       y: {
         title: {
           display: true,
-          text: 'Amount ($)',
+          text: 'Amount (Rs.)',
           font: {
             size: isMobile ? 12 : 16, // Smaller font on mobile
             weight: 'bold' as const,
@@ -214,7 +210,7 @@ const BarChart = ({ records }: { records: Record[] }) => {
           },
           color: isDark ? '#9ca3af' : '#7f8c8d', // Gray y-axis labels
           callback: function (value: string | number) {
-            return '$' + value; // Add dollar sign to y-axis labels
+            return 'Rs.' + value; // Add rupee symbol to y-axis labels
           },
         },
         grid: {
