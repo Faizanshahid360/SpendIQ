@@ -14,7 +14,7 @@ const ContactPage = () => {
           <h1 className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-gray-100 leading-tight'>
             Contact{' '}
             <span className='bg-gradient-to-r from-blue-600 via-blue-500 to-blue-400 bg-clip-text text-transparent'>
-              SpendIQ
+              SpendIQ Pakistan
             </span>
           </h1>
           <p className='text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed px-2 sm:px-0'>
@@ -23,7 +23,7 @@ const ContactPage = () => {
           </p>
           <div className='mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-2 sm:px-0'>
             <a
-              href='mailto:support@spendiq.com'
+              href='mailto:support@spendiq.com.pk'
               className='group relative overflow-hidden bg-gradient-to-r from-blue-600 via-blue-500 to-blue-400 hover:from-blue-700 hover:via-blue-600 hover:to-blue-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-semibold shadow-2xl hover:shadow-3xl transition-all duration-200 transform hover:-translate-y-0.5'
             >
               <span className='relative z-10 flex items-center justify-center gap-2'>
@@ -33,7 +33,7 @@ const ContactPage = () => {
               <div className='absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200'></div>
             </a>
             <a
-              href='tel:+11234567890'
+              href='tel:+923001234567'
               className='group border-2 border-blue-500/20 dark:border-blue-400/20 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-semibold transition-all duration-200 backdrop-blur-sm flex items-center justify-center gap-2'
             >
               Call Us
@@ -59,8 +59,8 @@ const ContactPage = () => {
               </span>
             </h2>
             <p className='text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-2 sm:px-0'>
-              Choose the most convenient way to reach out to our SpendIQ
-              support team.
+              Hamari SpendIQ Pakistan support team se rabta karne ka tareeqa chunein 
+              (Choose the most convenient way to reach out to our SpendIQ Pakistan support team).
             </p>
           </div>
 
@@ -83,7 +83,7 @@ const ContactPage = () => {
                   className='inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors duration-200 text-sm sm:text-base break-all sm:break-normal'
                 >
                     <span className='hidden sm:inline'>
-                      support@spendiq.com
+                      support@spendiq.com.pk
                     </span>
                   <span className='sm:hidden'>Email Us</span>
                   <span className='text-sm'>→</span>
@@ -105,10 +105,10 @@ const ContactPage = () => {
                   with urgent matters.
                 </p>
                 <a
-                  href='tel:+11234567890'
+                  href='tel:+923001234567'
                   className='inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors duration-200 text-sm sm:text-base'
                 >
-                  +1 (123) 456-7890
+                  +92 300 123 4567
                   <span className='text-sm'>→</span>
                 </a>
               </div>
@@ -128,9 +128,9 @@ const ContactPage = () => {
                   partnership discussions.
                 </p>
                 <div className='text-blue-600 dark:text-blue-400 font-medium text-sm sm:text-base'>
-                  123 AI Innovation St
+                  Office #4, 2nd Floor, Centaurus Mall
                   <br />
-                  Tech City, USA
+                  F-8/4, Islamabad, Pakistan
                 </div>
               </div>
             </div>
@@ -167,11 +167,15 @@ const ContactPage = () => {
               <div className='space-y-2 text-sm sm:text-base text-gray-600 dark:text-gray-400'>
                 <div className='flex justify-between'>
                   <span>Monday - Friday:</span>
-                  <span className='font-medium'>9:00 AM - 6:00 PM PST</span>
+                  <span className='font-medium'>9:00 AM - 5:00 PM PKT</span>
                 </div>
                 <div className='flex justify-between'>
                   <span>Saturday:</span>
-                  <span className='font-medium'>10:00 AM - 4:00 PM PST</span>
+                  <span className='font-medium'>10:00 AM - 2:00 PM PKT</span>
+                </div>
+                <div className='flex justify-between'>
+                  <span>Friday:</span>
+                  <span className='font-medium'>9:00 AM - 1:00 PM PKT</span>
                 </div>
                 <div className='flex justify-between'>
                   <span>Sunday:</span>

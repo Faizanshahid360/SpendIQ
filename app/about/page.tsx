@@ -215,7 +215,7 @@ const AboutPage = () => {
                 <div className='flex items-center gap-4'>
                   <div className='w-3 h-3 bg-blue-500 dark:bg-blue-400 rounded-full'></div>
                   <div className='text-gray-900 dark:text-gray-100 font-medium'>
-                    Founded in 2024
+                    Founded in 2025
                   </div>
                 </div>
                 <div className='flex items-center gap-4'>
